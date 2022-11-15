@@ -9,6 +9,7 @@ m = m1
 class Car():
     color = ' '
     price = 0
+    model = ' '
 
 class Car():
     def __init__(self, name=0, type_c=0, creator=0, color=0):
@@ -25,12 +26,12 @@ class Car():
         m = m1
         print('Enter a car number')
         i1 = int(input())
-        u = -3
+        u = -4
         t = 0 
         while t != i1 :
-            u += 3 
+            u += 4
             t += 1
-        del m[u:u+3]
+        del m[u:u+4]
         f = open('marks2.data','wb+')
         p.dump(m,f)
         f.close()
@@ -51,15 +52,17 @@ class Car():
         i = 1
         o = 0
         while o < len(m):
-            if m[o+1] != ' ' and m[o+2] != ' ':
-                print(str(i) + ')'+ m[o]+'/'+ m[o+1] + '/'+  m[o+2])
+            if m[o+1] != ' ' and m[o+2] != ' ' and m[o+3] != ' ':
+                print(str(i) + ')'+ m[o]+'/'+ m[o+1] + '/'+  m[o+2] + '/' + m[o+3])
             elif m[o+1] != ' ':
                 print(str(i)+ ')'+m[o]+'/'+m[o+1])
             elif m[o+2] != ' ':
                 print(str(i) +') '+ m[o]+'/'+m[o+2])
+            elif m[o+3] != ' ':
+                print(str(i) +') '+ m[o]+'/'+m[o+3])
             else:
                 print(str(i) +') '+ m[o])
-            o+=3
+            o+=4
             i +=1
             
     def add(self):
@@ -72,7 +75,7 @@ class Car():
         r = input()
     
         f = open('marks2.data','wb+')
-        p.dump(m+[r]+[' ']+[' '],f)
+        p.dump(m+[r]+[' ']+[' ']+[' '],f)
         f.close()
     
 
@@ -84,6 +87,7 @@ class Car():
         print('What do you want to edit?')
         print('1) Color')
         print('2) Price')
+        print('3) Model')
         y = int(input())
         print('Enter a car number')
         self.spisok()
@@ -105,6 +109,13 @@ class Car():
             print('Enter a price')
             pr = str(int(input()))+ '$'
             m[u+2] = pr
+            f = open('marks2.data','wb+')
+            p.dump(m,f)
+            f.close()
+        if y == 3:
+            print('Enter a model')
+            md = input()
+            m[u+3] = md
             f = open('marks2.data','wb+')
             p.dump(m,f)
             f.close()
